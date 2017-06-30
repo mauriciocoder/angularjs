@@ -11,7 +11,7 @@
       name: 'Gem2',
       price: 120.50,
       description: 'Gem2 description',
-      canSell: false
+      canSell: true
     },
   ]
   app.controller('StoreController', function() {

@@ -1,6 +1,9 @@
 <html ng-app="store">
 <body>
-  <div>{{2 + 1}}</div>
+  <div ng-controller="StoreController as store">
+    <div>{{store.product.name}}</div>
+    <div>{{store.product.price}}</div>
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
   <script src="dist/app.js"></script>
 </body>

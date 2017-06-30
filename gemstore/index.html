@@ -1,8 +1,10 @@
 <html ng-app="store">
-<body>
-  <div ng-controller="StoreController as store">
-    <div>{{store.product.name}}</div>
-    <div>{{store.product.price}}</div>
+<body ng-controller="StoreController as store">
+  <div ng-repeat="product in store.products" ng-show="product.canSell">
+    <div>{{product.name}}</div>
+    <div>{{product.price}}</div>
+    <div>{{product.description}}</div>
+    <br/>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
   <script src="dist/app.js"></script>

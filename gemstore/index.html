@@ -1,9 +1,41 @@
 <html ng-app="store">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
 <body ng-controller="StoreController as store">
+  <header>
+      <h1 class="text-center">Flatlander Crafted Gems</h1>
+      <h2 class="text-center">– an Angular store –</h2>
+  </header>
   <div ng-repeat="product in store.products | orderBy:'-price'" ng-show="product.canSell">
-    <div>{{product.name | uppercase}}</div>
-    <div>{{product.price | currency}}</div>
-    <div>{{product.description}}</div>
+    <h3>
+      {{product.name}}
+      <em class="pull-right">{{product.price | currency}}</em>
+    </h3>
+    <section ng-show="product.images.length">
+      <img width="50" ng-src="{{product.images[0]}}" />
+      <ul class="list-inline thumbs">
+        <li class="thumbnail" ng-repeat="image in product.images">
+          <img width="50" ng-src="{{image}}" />
+        </li>
+      </ul>
+    </section>
+    <section ng-controller="TabController as tab">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" ng-click="tab.setContent(0)">Description</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" ng-click="tab.setContent(1)">Specs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" ng-click="tab.setContent(2)">Review</a>
+        </li>
+      </ul>
+      <div ng-show="tab.isContent(0)">{{product.description}}</div>
+      <div ng-show="tab.isContent(1)">{{product.specs}}</div>
+      <div ng-show="tab.isContent(2)">{{product.reviews}}</div>
+    </section>
     <br/>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>

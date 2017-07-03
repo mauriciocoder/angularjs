@@ -34,7 +34,36 @@
       </ul>
       <div ng-show="tab.isContent(0)">{{product.description}}</div>
       <div ng-show="tab.isContent(1)">{{product.specs}}</div>
-      <div ng-show="tab.isContent(2)">{{product.reviews}}</div>
+      <div ng-show="tab.isContent(2)">
+        <div ng-repeat="review in product.reviews">
+          <blockquote>
+            <strong>{{review.stars}} Stars</strong>
+            <div>{{review.body}}</div>
+            <div><cite>{{review.author}}</cite></div>
+          </blockquote>
+        </div>
+        <div>
+          <form name="review-form">
+            <blockquote>
+              <h3>Write your Review</h3>
+              <div>
+                <blockquote>
+                  <strong>{{review.stars}} Stars</strong>
+                  <div>{{review.body}}</div>
+                  <div><cite>{{review.author}}</cite></div>
+                </blockquote>
+              </div>
+              <div>
+                <select ng-model="review.stars" ng-options="stars for stars in [5, 4, 3, 2, 1]">
+                <option value="">Rate the product</option>
+                </select>
+              </div>
+              <div><textarea ng-model="review.body" placeholder="Write your review"></textarea></div>
+              <div><textarea ng-model="review.author" placeholder="E-mail"></textarea></div>
+            </blockquote>
+          </form>
+        </div>
+      </div>
     </section>
     <br/>
   </div>

@@ -1,6 +1,7 @@
 <html ng-app="store">
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="./app.css">
 </head>
 <body ng-controller="StoreController as store">
   <header>
@@ -43,23 +44,24 @@
           </blockquote>
         </div>
         <div>
-          <form name="review-form">
+          <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
             <blockquote>
               <h3>Write your Review</h3>
               <div>
                 <blockquote>
-                  <strong>{{review.stars}} Stars</strong>
-                  <div>{{review.body}}</div>
-                  <div><cite>{{review.author}}</cite></div>
+                  <strong>{{reviewCtrl.review.stars}} Stars</strong>
+                  <div>{{reviewCtrl.review.body}}</div>
+                  <div><cite>{{reviewCtrl.review.author}}</cite></div>
                 </blockquote>
               </div>
               <div>
-                <select ng-model="review.stars" ng-options="stars for stars in [5, 4, 3, 2, 1]">
+                <select required ng-model="reviewCtrl.review.stars" ng-options="stars for stars in [5, 4, 3, 2, 1]">
                 <option value="">Rate the product</option>
                 </select>
               </div>
-              <div><textarea ng-model="review.body" placeholder="Write your review"></textarea></div>
-              <div><textarea ng-model="review.author" placeholder="E-mail"></textarea></div>
+              <div><input type="text" required ng-model="reviewCtrl.review.body" placeholder="Write your review"></textarea></div>
+              <div><input type="email" required ng-model="reviewCtrl.review.author" placeholder="E-mail"></textarea></div>
+              <button>Submit</button>
             </blockquote>
           </form>
         </div>

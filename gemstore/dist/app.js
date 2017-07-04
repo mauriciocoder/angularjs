@@ -1,5 +1,5 @@
 (function() {
-  var app = angular.module('store', [])
+  var app = angular.module('store', ['product'])
   var gems = [
     {
       name: 'Gem1',
@@ -43,18 +43,6 @@
       this.review = {}
     }
   })
-  app.directive('gsProductDescription', function() {
-    return {
-      restrict: 'E',
-      templateUrl: 'gs-product-description.html'
-    }
-  })
-  app.directive('gsProductSpecs', function() {
-    return {
-      restricts: 'A',
-      templateUrl: 'gs-product-specs.html'
-    }
-  })
   app.directive('gsTabs', function() {
     return {
       restricts: 'E',
@@ -71,11 +59,4 @@
       controllerAs: 'tab'
     }
   })
-  app.directive('gsGallery', function() {
-    return {
-      restricts: 'E',
-      templateUrl: 'gs-gallery.html'
-    }
-  })
-
 })()

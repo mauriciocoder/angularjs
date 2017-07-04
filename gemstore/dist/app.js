@@ -71,4 +71,11 @@
       controllerAs: 'tab'
     }
   })
+  app.directive('gsGallery', function() {
+    return {
+      restricts: 'E',
+      templateUrl: 'gs-gallery.html'
+    }
+  })
+
 })()

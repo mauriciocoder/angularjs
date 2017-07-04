@@ -10,14 +10,7 @@
   </header>
   <div ng-repeat="product in store.products | orderBy:'-price'" ng-show="product.canSell">
     <gs-product-description></gs-product-description>
-    <section ng-show="product.images.length">
-      <img width="50" ng-src="{{product.images[0]}}" />
-      <ul class="list-inline thumbs">
-        <li class="thumbnail" ng-repeat="image in product.images">
-          <img width="50" ng-src="{{image}}" />
-        </li>
-      </ul>
-    </section>
+    <gs-gallery></gs-gallery>
     <gs-tabs></gs-tabs>
     <div ng-show="tab.isContent(0)">{{product.description}}</div>
     <div gs-product-specs ng-show="tab.isContent(1)"></div>

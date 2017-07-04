@@ -33,9 +33,13 @@
       'http://planbee.biz/wp-content/uploads/2012/07/Blue-Diamond.png']
     },
   ]
-  app.controller('StoreController', function() {
-    this.products = gems
-  })
+  app.controller('StoreController', ['$http', function($http) {
+    var store = this
+    store.products = []
+    $http.get('/products.json').then(function(result) {
+      store.products = result.data
+    })
+  }])
   app.controller('ReviewController', function() {
     this.review = {}
     this.addReview = function(product) {

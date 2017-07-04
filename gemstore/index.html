@@ -31,7 +31,7 @@
         </li>
       </ul>
       <div ng-show="tab.isContent(0)">{{product.description}}</div>
-      <div ng-show="tab.isContent(1)">{{product.specs}}</div>
+      <div gs-product-specs ng-show="tab.isContent(1)"></div>
       <div ng-show="tab.isContent(2)">
         <div ng-repeat="review in product.reviews">
           <blockquote>

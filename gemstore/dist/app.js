@@ -58,5 +58,10 @@
       templateUrl: 'gs-product-description.html'
     }
   })
-
+  app.directive('gsProductSpecs', function() {
+    return {
+      restricts: 'A',
+      templateUrl: 'gs-product-specs.html'
+    }
+  })
 })()

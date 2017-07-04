@@ -9,10 +9,7 @@
       <h2 class="text-center">– an Angular store –</h2>
   </header>
   <div ng-repeat="product in store.products | orderBy:'-price'" ng-show="product.canSell">
-    <h3>
-      {{product.name}}
-      <em class="pull-right">{{product.price | currency}}</em>
-    </h3>
+    <gs-product-description></gs-product-description>
     <section ng-show="product.images.length">
       <img width="50" ng-src="{{product.images[0]}}" />
       <ul class="list-inline thumbs">

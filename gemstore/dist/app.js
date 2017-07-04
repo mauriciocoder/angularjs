@@ -52,5 +52,11 @@
       this.review = {}
     }
   })
+  app.directive('gsProductDescription', function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'gs-product-description.html'
+    }
+  })
 
 })()

@@ -36,15 +36,6 @@
   app.controller('StoreController', function() {
     this.products = gems
   })
-  app.controller('TabController', function() {
-    this.content = 0
-    this.setContent = function(c) {
-      this.content = c
-    }
-    this.isContent = function(c) {
-      return this.content === c
-    }
-  })
   app.controller('ReviewController', function() {
     this.review = {}
     this.addReview = function(product) {
@@ -62,6 +53,22 @@
     return {
       restricts: 'A',
       templateUrl: 'gs-product-specs.html'
+    }
+  })
+  app.directive('gsTabs', function() {
+    return {
+      restricts: 'E',
+      templateUrl: 'gs-tabs.html',
+      controller: function() {
+        this.content = 0
+        this.setContent = function(c) {
+          this.content = c
+        }
+        this.isContent = function(c) {
+          return this.content === c
+        }
+      },
+      controllerAs: 'tab'
     }
   })
 })()

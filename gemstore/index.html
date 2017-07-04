@@ -18,52 +18,40 @@
         </li>
       </ul>
     </section>
-    <section ng-controller="TabController as tab">
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a class="nav-link active" href="#" ng-click="tab.setContent(0)">Description</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" ng-click="tab.setContent(1)">Specs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" ng-click="tab.setContent(2)">Review</a>
-        </li>
-      </ul>
-      <div ng-show="tab.isContent(0)">{{product.description}}</div>
-      <div gs-product-specs ng-show="tab.isContent(1)"></div>
-      <div ng-show="tab.isContent(2)">
-        <div ng-repeat="review in product.reviews">
-          <blockquote>
-            <strong>{{review.stars}} Stars</strong>
-            <div>{{review.body}}</div>
-            <div><cite>{{review.author}}</cite></div>
-          </blockquote>
-        </div>
-        <div>
-          <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
-            <blockquote>
-              <h3>Write your Review</h3>
-              <div>
-                <blockquote>
-                  <strong>{{reviewCtrl.review.stars}} Stars</strong>
-                  <div>{{reviewCtrl.review.body}}</div>
-                  <div><cite>{{reviewCtrl.review.author}}</cite></div>
-                </blockquote>
-              </div>
-              <div>
-                <select required ng-model="reviewCtrl.review.stars" ng-options="stars for stars in [5, 4, 3, 2, 1]">
-                <option value="">Rate the product</option>
-                </select>
-              </div>
-              <div><input type="text" required ng-model="reviewCtrl.review.body" placeholder="Write your review"></input></div>
-              <div><input type="email" required ng-model="reviewCtrl.review.author" placeholder="E-mail"></input></div>
-              <button>Submit</button>
-            </blockquote>
-          </form>
-        </div>
+    <gs-tabs></gs-tabs>
+    <div ng-show="tab.isContent(0)">{{product.description}}</div>
+    <div gs-product-specs ng-show="tab.isContent(1)"></div>
+    <div ng-show="tab.isContent(2)">
+      <div ng-repeat="review in product.reviews">
+        <blockquote>
+          <strong>{{review.stars}} Stars</strong>
+          <div>{{review.body}}</div>
+          <div><cite>{{review.author}}</cite></div>
+        </blockquote>
       </div>
-    </section>
+      <div>
+        <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+          <blockquote>
+            <h3>Write your Review</h3>
+            <div>
+              <blockquote>
+                <strong>{{reviewCtrl.review.stars}} Stars</strong>
+                <div>{{reviewCtrl.review.body}}</div>
+                <div><cite>{{reviewCtrl.review.author}}</cite></div>
+              </blockquote>
+            </div>
+            <div>
+              <select required ng-model="reviewCtrl.review.stars" ng-options="stars for stars in [5, 4, 3, 2, 1]">
+              <option value="">Rate the product</option>
+              </select>
+            </div>
+            <div><input type="text" required ng-model="reviewCtrl.review.body" placeholder="Write your review"></input></div>
+            <div><input type="email" required ng-model="reviewCtrl.review.author" placeholder="E-mail"></input></div>
+            <button>Submit</button>
+          </blockquote>
+        </form>
+      </div>
+    </div>
     <br/>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
